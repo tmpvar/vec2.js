@@ -1,6 +1,11 @@
-require('chai').should();
-
-var Vec2 = require('../lib/Vec2')
+var Vec2;
+if (typeof require !== 'undefined') {
+  require('chai').should();
+  Vec2 = require('../lib/Vec2')
+} else {
+  Vec2 = window.Vec2;
+  chai.should();
+}
 
 describe('Vec2', function() {
   describe('constructor', function() {
