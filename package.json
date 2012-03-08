@@ -1,0 +1,23 @@
+{
+  "author": "Elijah Insua <tmpvar@gmail.com> (http://tmpvar.com)",
+  "name": "vec2",
+  "description": "Library for manipulating 2d vectors",
+  "version": "0.0.1",
+  "homepage": "https://github.com/tmpvar/vec2.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmpvar/vec2.js.git"
+  },
+  "main": "vec2.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "chai" : "0.5.0",
+    "mocha" : "0.14.1"
+  },
+  "optionalDependencies": {}
+}
