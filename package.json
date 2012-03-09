@@ -8,14 +8,13 @@
     "type": "git",
     "url": "https://github.com/tmpvar/vec2.js.git"
   },
-  "main": "vec2.js",
+  "main": "lib/vec2.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test/test.js",
+    "build" : "uglifyjs lib/vec2.js > lib/vec2.min.js"
   },
-  "dependencies": {},
   "devDependencies": {
     "chai" : "0.5.0",
     "mocha" : "0.14.1"
-  },
-  "optionalDependencies": {}
+  }
 }
