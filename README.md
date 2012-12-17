@@ -4,8 +4,12 @@
 
 ## Example Usage
 
-    var a = new Vec2(10, 10), b = new Vec2(100, 10);
-    console.log(a.distance(b)); // 90
+```javascript
+  var a = new Vec2(10, 10), // new keyword
+      b = Vec2(100, 10); // call the constructor directly
+
+  console.log(a.distance(b)); // 90
+```
 
 ### Supported operations
 
@@ -27,6 +31,10 @@
  * clamp
  * isValid
  * skew
+ * dot
+ * perpDot
+ * angleTo
+ * divide
 
 **Stuff to Note**: most of the Vec2's methods take a `returnNew` as the last parameter.  If passed a truthy value, a new vector will be returned to you.  Otherwise the operation will be applied to `this` and `this` will be returned.
 
@@ -34,10 +42,12 @@
 
 ### Browser
 
-    <script type="text/javascript" src="https://raw.github.com/tmpvar/vec2.js/master/lib/vec2.min.js"></script>
-    <script type="text/javascript>
-       var v = new Vec2();
-    </script>
+```html
+<script type="text/javascript" src="https://raw.github.com/tmpvar/vec2.js/master/lib/vec2.min.js"></script>
+<script type="text/javascript>
+   var v = new Vec2();
+</script>
+```
 
 ### Node
 

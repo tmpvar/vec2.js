@@ -19,7 +19,13 @@ describe('Vec2', function() {
       var v = new Vec2();
       v.x.should.equal(0);
       v.y.should.equal(0);
-    })
+    });
+
+    it('should return a new instance if not called with new', function() {
+      var v = Vec2(1, 2);
+      v.x.should.equal(1);
+      v.y.should.equal(2);
+    });
   });
 
   describe('#set', function() {
@@ -401,6 +407,68 @@ describe('Vec2', function() {
     it('returns true when finite', function() {
       var v = new Vec2(-100, 0);
       (v.isValid()).should.equal(true);
+    });
+  });
+
+  describe('#dot', function() {
+    it('should return the dot product of this vector', function() {
+      var dot = Vec2(10, 10).dot(Vec2(5, 15));
+      dot.should.equal(200);
+    });
+  });
+
+  describe('#perpDot', function() {
+    it('should return the dot product of this vector', function() {
+      var dot = Vec2(10, 10).perpDot(Vec2(5, 15));
+      dot.should.equal(100);
+    });
+  });
+
+  describe('#angleTo', function() {
+    it('should return the radians between two vecs', function() {
+      var angle = Vec2(10, 0).angleTo(Vec2(0, 10));
+      angle.should.equal(Math.PI/2);
+    });
+  });
+
+  describe('#divide', function() {
+    it('applies the result to itself if returnNew is falsy', function() {
+      var v = new Vec2(10, 20);
+      v.divide(10);
+      v.x.should.equal(1);
+      v.y.should.equal(2);
+    });
+
+    it('returns a new vector when returnNew is truthy', function() {
+      var v = new Vec2(10, 20);
+      var v2 = v.divide(10, true);
+      v.x.should.equal(10);
+      v.y.should.equal(20);
+
+      v2.x.should.equal(1);
+      v2.y.should.equal(2);
+    });
+
+    it('should throw when 0 is passed', function() {
+      var err = false;
+      try {
+        Vec2().divide(0);
+      } catch (e) {
+        err = true;
+      }
+
+      err.should.equal(true);
+    });
+
+    it('should throw when NaN is passed', function() {
+      var err = false;
+      try {
+        Vec2().divide(1/'a');
+      } catch (e) {
+        err = true;
+      }
+
+      err.should.equal(true);
     });
   });
 });

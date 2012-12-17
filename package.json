@@ -2,7 +2,7 @@
   "author": "Elijah Insua <tmpvar@gmail.com> (http://tmpvar.com)",
   "name": "vec2",
   "description": "Library for manipulating 2d vectors",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/tmpvar/vec2.js",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   },
   "main": "lib/vec2.js",
   "scripts": {
-    "test": "mocha test/test.js",
+    "test": "node_modules/mocha/bin/mocha test/test.js",
     "build" : "uglifyjs lib/vec2.js > lib/vec2.min.js"
   },
   "devDependencies": {
