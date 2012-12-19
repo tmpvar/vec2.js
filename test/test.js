@@ -250,9 +250,19 @@ describe('Vec2', function() {
 
     describe('#normalize', function() {
       it('properly normalizes a vector', function() {
-        v2.normalize();
-        v2.x.should.equal(0.7071067811865475);
-        v2.y.should.equal(0.7071067811865475);
+        var v = new Vec2(2, 5);
+        var v2 = v.normalize();
+        v2.x.should.equal(0.3713906763541037);
+        v2.y.should.equal(0.9284766908852593);
+        v.should.equal(v2);
+      });
+
+      it('should return a new vector when returnNew is truthy', function() {
+        var v = new Vec2(2, 5);
+        var v2 = v.normalize(true);
+        v2.x.should.equal(0.3713906763541037);
+        v2.y.should.equal(0.9284766908852593);
+        v.should.not.equal(v2);
       });
     });
 
