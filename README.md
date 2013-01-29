@@ -2,7 +2,7 @@
 
   A generic library useful when you need to work with points/vectors in 2d space.
 
-## Example Usage
+## Use
 
 ```javascript
   var a = new Vec2(10, 10), // new keyword
@@ -35,6 +35,8 @@
  * perpDot
  * angleTo
  * divide
+ * toArray
+ * fromArray
 
 **Stuff to Note**: most of the Vec2's methods take a `returnNew` as the last parameter.  If passed a truthy value, a new vector will be returned to you.  Otherwise the operation will be applied to `this` and `this` will be returned.
 
