@@ -62,6 +62,16 @@ describe('Vec2', function() {
     });
   });
 
+  describe('#dirty', function() {
+    it('should clear the caches', function() {
+      var v = Vec2(200, 20);
+      var length = v.length();
+      v.__cachedLength.should.equal(length);
+      v.dirty();
+      v.should.have.property('__cachedLength', null);
+    });
+  });
+
   describe('#set', function() {
     it('sets x and y', function() {
       var v = new Vec2();
@@ -83,6 +93,16 @@ describe('Vec2', function() {
 
       v.set(1,1);
 
+      called.should.equal(true);
+    });
+
+    it('should call dirty()', function() {
+      var v = Vec2(), called = false;
+      v.dirty = function() {
+        called = true;
+      };
+
+      v.set(1,2);
       called.should.equal(true);
     });
   });
