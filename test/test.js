@@ -28,6 +28,40 @@ describe('Vec2', function() {
     });
   });
 
+  describe('#change', function() {
+    it('should add an observer callback when fn is passed', function() {
+      var v = Vec2();
+      v.change(function(){});
+      v.observers.length.should.equal(1);
+    });
+
+    it('should call the observers when fn is not passed', function() {
+      var v = Vec2(), called = false;
+
+      v.change(function(){
+        called = true;
+      });
+
+      v.change();
+
+      v.observers.length.should.equal(1);
+      called.should.equal(true);
+    });
+  });
+
+  describe('#ignore', function() {
+    it('should add an observer callback when fn is passed', function() {
+      var v = Vec2();
+
+      var ignoreLater = function(){};
+      v.change(ignoreLater);
+      v.change(function(){});
+      v.observers.length.should.equal(2);
+      v.ignore(ignoreLater);
+      v.observers.length.should.equal(1);
+    });
+  });
+
   describe('#set', function() {
     it('sets x and y', function() {
       var v = new Vec2();
@@ -39,6 +73,17 @@ describe('Vec2', function() {
     it('is chainable', function() {
       var v = new Vec2();
       v.set(1,2).should.equal(v);
+    });
+
+    it('should call change()', function() {
+      var called = false;
+      var v = Vec2().change(function() {
+        called=true;
+      });
+
+      v.set(1,1);
+
+      called.should.equal(true);
     });
   });
 
