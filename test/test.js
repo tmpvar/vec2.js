@@ -481,4 +481,20 @@ describe('Vec2', function() {
       err.should.equal(true);
     });
   });
+
+  describe('#toArray', function() {
+    it('should return a 2 item array', function() {
+      var a = Vec2(1,2).toArray();
+      a[0].should.equal(1);
+      a[1].should.equal(2);
+    });
+  });
+
+  describe('#fromArray', function() {
+    it('should accept a 2 item array', function() {
+      var v = Vec2().fromArray([1,2]);
+      v.x.should.equal(1);
+      v.y.should.equal(2);
+    });
+  });
 });
