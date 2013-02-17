@@ -329,6 +329,13 @@ describe('Vec2', function() {
         v2.y.should.equal(0.9284766908852593);
         v.should.not.equal(v2);
       });
+
+      it ('should properly normalize a vector at 0,0', function() {
+        var v = Vec2(0,0);
+        v.normalize();
+        v.x.should.equal(0);
+        v.y.should.equal(0);
+      })
     });
 
     describe('#skew', function() {
