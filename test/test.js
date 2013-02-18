@@ -568,5 +568,11 @@ describe('Vec2', function() {
       v.x.should.equal(1);
       v.y.should.equal(2);
     });
+    it('should be a class member as well', function() {
+      var v = Vec2.fromArray([1,2]);
+      v.x.should.equal(1);
+      v.y.should.equal(2);
+    });
   });
+
 });
