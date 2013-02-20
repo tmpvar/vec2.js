@@ -1,7 +1,7 @@
 var Vec2;
 if (typeof require !== 'undefined') {
   require('chai').should();
-  Vec2 = require('../lib/Vec2')
+  Vec2 = require('../lib/vec2')
 } else {
   Vec2 = window.Vec2;
   chai.should();
