@@ -478,7 +478,27 @@ describe('Vec2', function() {
 
       (val.clamp(low, high, true) !== val).should.equal(true);
     });
-  })
+  });
+
+  describe('#lerp', function() {
+    it('should return the first point when 0', function() {
+      var v = Vec2(5, 5).lerp(Vec2(100, 5), 0);
+      v.x.should.equal(5);
+      v.y.should.equal(5);
+    });
+
+    it('should return the last point when 1', function() {
+      var v = Vec2(5, 5).lerp(Vec2(100, 5), 1);
+      v.x.should.equal(100);
+      v.y.should.equal(5);
+    });
+
+    it('should return the halfway point when .5', function() {
+      var v = Vec2(0, 5).lerp(Vec2(100, 5), .5);
+      v.x.should.equal(50);
+      v.y.should.equal(5);
+    });
+  });
 
   describe('#dot', function() {
     it('should return the dot product of this vector', function() {
