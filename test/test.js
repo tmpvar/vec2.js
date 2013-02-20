@@ -105,6 +105,14 @@ describe('Vec2', function() {
       v.set(1,2);
       called.should.equal(true);
     });
+
+    it('should clean values', function() {
+      var v1 = Vec2(0.1, 0.1);
+      var v2 = Vec2(0.2, 0.2);
+      var result = v1.add(v2, true);
+      result.x.should.equal(0.3);
+      result.y.should.equal(0.3);
+    });
   });
 
   describe('#zero', function() {
@@ -255,8 +263,8 @@ describe('Vec2', function() {
         var v = new Vec2(10, 20);
 
         (v.rotate(1.2, false, true).equal(
-          -15.017204174577788,
-          16.567545949205734
+          -15.01720417,
+          16.56754594
         )).should.equal(true);
       });
 
@@ -264,8 +272,8 @@ describe('Vec2', function() {
         var v = new Vec2(10, 20);
 
         (v.rotate(1.2, true, true).equal(
-          22.26435926411126,
-          -2.0732357701387896
+          22.26435926,
+          -2.07323577
         )).should.equal(true);
       });
 
@@ -317,16 +325,16 @@ describe('Vec2', function() {
       it('properly normalizes a vector', function() {
         var v = new Vec2(2, 5);
         var v2 = v.normalize();
-        v2.x.should.equal(0.3713906763541037);
-        v2.y.should.equal(0.9284766908852593);
+        v2.x.should.equal(0.37139067);
+        v2.y.should.equal(0.92847669);
         v.should.equal(v2);
       });
 
       it('should return a new vector when returnNew is truthy', function() {
         var v = new Vec2(2, 5);
         var v2 = v.normalize(true);
-        v2.x.should.equal(0.3713906763541037);
-        v2.y.should.equal(0.9284766908852593);
+        v2.x.should.equal(0.37139067);
+        v2.y.should.equal(0.92847669);
         v.should.not.equal(v2);
       });
 
@@ -472,26 +480,6 @@ describe('Vec2', function() {
     });
   })
 
-  describe('#isValid', function() {
-    it('returns false when NaN', function() {
-      var v = new Vec2();
-      v.x = parseInt('a', 10);
-      v.y = 0;
-
-      (!v.isValid()).should.equal(true);
-    });
-
-    it('returns false when Infinity', function() {
-      var v = new Vec2(0, 1/0);
-      (!v.isValid()).should.equal(true);
-    });
-
-    it('returns true when finite', function() {
-      var v = new Vec2(-100, 0);
-      (v.isValid()).should.equal(true);
-    });
-  });
-
   describe('#dot', function() {
     it('should return the dot product of this vector', function() {
       var dot = Vec2(10, 10).dot(Vec2(5, 15));
@@ -575,4 +563,21 @@ describe('Vec2', function() {
     });
   });
 
+  describe('#clean', function() {
+    it('should clean the well known .1 + .2 case', function() {
+      Vec2.clean(.1 + .2).should.equal(.3)
+    });
+
+    it('should throw when passed NaN', function() {
+      (function() {
+        Vec2.clean(parseInt('bla', 10));
+      }).should.throw();
+    });
+
+    it('should throw when passed Infinity', function() {
+      (function() {
+        Vec2.clean(1/0)
+      }).should.throw();
+    });
+  });
 });
