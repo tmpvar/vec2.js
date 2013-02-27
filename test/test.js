@@ -263,8 +263,8 @@ describe('Vec2', function() {
         var v = new Vec2(10, 20);
 
         (v.rotate(1.2, false, true).equal(
-          -15.01720417,
-          16.56754594
+          -15.017204,
+          16.567546
         )).should.equal(true);
       });
 
@@ -272,8 +272,8 @@ describe('Vec2', function() {
         var v = new Vec2(10, 20);
 
         (v.rotate(1.2, true, true).equal(
-          22.26435926,
-          -2.07323577
+          22.264359,
+          -2.0732358
         )).should.equal(true);
       });
 
@@ -325,7 +325,7 @@ describe('Vec2', function() {
       it('properly normalizes a vector', function() {
         var v = new Vec2(2, 5);
         var v2 = v.normalize();
-        v2.x.should.equal(0.37139067);
+        v2.x.should.equal(0.37139068);
         v2.y.should.equal(0.92847669);
         v.should.equal(v2);
       });
@@ -333,7 +333,7 @@ describe('Vec2', function() {
       it('should return a new vector when returnNew is truthy', function() {
         var v = new Vec2(2, 5);
         var v2 = v.normalize(true);
-        v2.x.should.equal(0.37139067);
+        v2.x.should.equal(0.37139068);
         v2.y.should.equal(0.92847669);
         v.should.not.equal(v2);
       });
