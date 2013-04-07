@@ -21,6 +21,12 @@ describe('Vec2', function() {
       v.y.should.equal(0);
     });
 
+    it('x, y are always created on the object itself', function() {
+      var v = new Vec2();
+      v.should.ownProperty('x');
+      v.should.ownProperty('y');
+    });
+
     it('should return a new instance if not called with new', function() {
       var v = Vec2(1, 2);
       v.x.should.equal(1);
