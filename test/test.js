@@ -133,6 +133,42 @@ describe('Vec2', function() {
       result.x.should.equal(0.3);
       result.y.should.equal(0.3);
     });
+
+    it('should accept a Vec2', function () {
+      var v1 = Vec2();
+      var v2 = Vec2(Math.random(), Math.random());
+      v1.x.should.not.equal(v2.x)
+      v1.y.should.not.equal(v2.y)
+      v1.set(v2)
+      v1.x.should.equal(v2.x)
+      v1.y.should.equal(v2.y)
+    });
+
+    it('should not call change if silent=true', function () {
+      var v = Vec2(), called = false;
+
+      v.set(0, 0)
+
+      v.change(function(){
+        called = true;
+      });
+
+      v.set(7, 5, false)
+      called.should.equal(false);
+    });
+
+    it('should not call change if silent=true, with set(Vec2)', function () {
+      var v = Vec2(), called = false;
+
+      v.set(0, 0)
+
+      v.change(function(){
+        called = true;
+      });
+
+      v.set(new Vec2(7, 5), false)
+      called.should.equal(false);
+    });
   });
 
   describe('#zero', function() {
@@ -619,4 +655,11 @@ describe('Vec2', function() {
       }).should.throw();
     });
   });
+
+  describe('#toJSON', function () {
+    it('should stringify nicely', function () {
+      var v = new Vec2(3.5421, 0.234);
+      JSON.stringify(v).should.equal('{"x":3.5421,"y":0.234}');
+    })
+  })
 });
