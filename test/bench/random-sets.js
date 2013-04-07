@@ -10,4 +10,4 @@ while(l --)
   v.set(Math.random(), Math.random())
 
 var end = Date.now()
-console.log('random sets. ops/s', (max/(end - start))*1000)
+console.log('  random sets. ops/s', (max/(end - start))*1000)

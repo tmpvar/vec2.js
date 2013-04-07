@@ -8,15 +8,18 @@ if [ x$BRANCH = x ]; then
   BRANCH=master
 fi
 
+echo ----------------------------------
 echo running benchmark against: $BRANCH
-
+date
+echo ----------------------------------
 # setup benchmark env
 {
   cd /tmp
   git clone $DIR vec2-benchmark
   cd $_DIR
-  git pull $DIR benchmark
-  git checkout benchmark
+  git pull $DIR $BRANCH
+  git checkout $BRANCH
+  cp -r $DIR/test/bench/*.js $_DIR/test/bench/
 } > /dev/null 2> /dev/null
 
 # install if necessary
@@ -28,10 +31,14 @@ cd $DIR/test/bench
 
 for BENCH in *.js; do
 
-echo master / $BENCH
-node $_DIR/test/bench/$BENCH
+  echo --- $BENCH -------------
+  echo
+  echo $BRANCH
+  node $_DIR/test/bench/$BENCH
 
-echo test / $BENCH
-node $DIR/test/bench/$BENCH
+  echo TEST
+  node $DIR/test/bench/$BENCH
+
+  echo
 
 done
