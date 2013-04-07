@@ -282,19 +282,18 @@ describe('Vec2', function() {
       it('accepts a scalar angle in radians', function() {
         var v = new Vec2(10, 20);
 
-        (v.rotate(1.2, false, true).equal(
-          -15.017204,
-          16.567546
-        )).should.equal(true);
+        var rotated = v.rotate(1.2, false, true)
+        Number(rotated.x).toFixed(4).should.equal('-15.0172');
+        Number(rotated.y).toFixed(4).should.equal('16.5675');
       });
+
 
       it('accepts a scalar angle in radians (inverse)', function() {
         var v = new Vec2(10, 20);
 
-        (v.rotate(1.2, true, true).equal(
-          22.264359,
-          -2.0732358
-        )).should.equal(true);
+        var rotated = v.rotate(1.2, true, true);
+        Number(rotated.x).toFixed(4).should.equal('22.2644');
+        Number(rotated.y).toFixed(4).should.equal('-2.0732');
       });
 
       it('returns a new vector if returnNew is truthy', function() {
