@@ -10,9 +10,9 @@ a.change(function () {
   b.set(a.x + 10, a.y + 10)
 })
 var start = Date.now()
-while(l --)
+while(l --) {
   a.set(Math.random(), Math.random())
-
+}
 var end = Date.now()
 console.log('  observer ops/s', (max/(end - start))*1000)
 
