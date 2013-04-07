@@ -96,6 +96,20 @@ describe('Vec2', function() {
       called.should.equal(true);
     });
 
+    it('should not call change if new value === old value', function () {
+      var v = Vec2(), called = false;
+
+      v.set(0, 0)
+
+      v.change(function(){
+        called = true;
+      });
+
+      v.set(0, 0)
+
+      called.should.equal(false);
+    });
+
     it('should call dirty()', function() {
       var v = Vec2(), called = false;
       v.dirty = function() {
