@@ -1,5 +1,6 @@
 var Vec2;
 if (typeof require !== 'undefined') {
+  var assert = require('assert')
   require('chai').should();
   Vec2 = require('../lib/vec2')
 } else {
@@ -68,15 +69,15 @@ describe('Vec2', function() {
     });
   });
 
-  describe('#dirty', function() {
-    it('should clear the caches', function() {
-      var v = Vec2(200, 20);
-      var length = v.length();
-      v.__cachedLength.should.equal(length);
-      v.dirty();
-      v.should.have.property('__cachedLength', null);
-    });
-  });
+//  describe('#dirty', function() {
+//    it('should clear the caches', function() {
+//      var v = Vec2(200, 20);
+//      var length = v.length();
+//      v.__cachedLength.should.equal(length);
+//      v.dirty();
+//      v.should.have.property('__cachedLength', null);
+//    });
+//  });
 
   describe('#set', function() {
     it('sets x and y', function() {
