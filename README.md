@@ -35,6 +35,7 @@
  * perpDot
  * angleTo
  * divide
+ * isPointOnLine(vec1, vec2)
  * toArray
  * fromArray
 

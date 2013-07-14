@@ -618,6 +618,16 @@ describe('Vec2', function() {
     });
   });
 
+  describe('#isPointOnLine', function() {
+    it('should return true when on the specified line', function() {
+      Vec2(0, 0).isPointOnLine(Vec2(1, 1), Vec2(-1, -1)).should.equal(true);
+    });
+
+    it('should return false when not on the specified line', function() {
+      Vec2(0, 0).isPointOnLine(Vec2(1, 1), Vec2(-4, -1)).should.equal(false);
+    });
+  });
+
   describe('#toArray', function() {
     it('should return a 2 item array', function() {
       var a = Vec2(1,2).toArray();
