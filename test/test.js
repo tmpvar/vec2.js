@@ -673,4 +673,11 @@ describe('Vec2', function() {
       JSON.stringify(v).should.equal('{"x":3.5421,"y":0.234}');
     })
   })
+
+  describe('#toString', function() {
+    it('should provide an easy to read representation', function() {
+      var v = new Vec2(10, 100);
+      (v + '').should.equal('(10, 100)');
+    })
+  });
 });
