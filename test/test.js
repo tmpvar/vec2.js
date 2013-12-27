@@ -496,6 +496,11 @@ describe('Vec2', function() {
       (v.equal(1,2)).should.equal(true);
       (!v.equal(2,1)).should.equal(true);
     });
+
+    it('detects values that are closer than Vec2.precision', function() {
+      var v = new Vec2(1, 2);
+      (v.equal(Vec2(1.0 + 1e-14, 2))).should.equal(true);
+    });
   });
 
   describe('clamp', function() {
