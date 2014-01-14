@@ -1,5 +1,7 @@
 # Vec2.js
 
+![travis](https://api.travis-ci.org/tmpvar/vec2.js.png)
+
   A generic library useful when you need to work with points/vectors in 2d space.
 
 ## Use

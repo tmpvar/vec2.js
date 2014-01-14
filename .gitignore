@@ -2,3 +2,4 @@
 gmon.out
 node_modules/
 coverage
+*.log
