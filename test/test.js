@@ -1,6 +1,6 @@
 var Vec2;
 if (typeof require !== 'undefined') {
-  var assert = require('assert')
+  var assert = require('chai').assert;
   require('chai').should();
   Vec2 = require('../lib/vec2')
 } else {
@@ -33,6 +33,12 @@ describe('Vec2', function() {
       v.x.should.equal(1);
       v.y.should.equal(2);
     });
+
+    it('should extract x,y from an incoming object', function() {
+      var v = Vec2({ x: 10, y: 0 });
+      v.x.should.equal(10);
+      v.y.should.equal(0);
+    })
   });
 
   describe('#change', function() {
@@ -66,6 +72,15 @@ describe('Vec2', function() {
       v.observers.length.should.equal(2);
       v.ignore(ignoreLater);
       v.observers.length.should.equal(1);
+    });
+  });
+
+  describe('#clone', function() {
+    it('should return a new Vec2 with the same component values', function() {
+      var v = Vec2(0, 1);
+      var v2 = v.clone();
+      assert.ok(v !== v2);
+
     });
   });
 
@@ -411,6 +426,15 @@ describe('Vec2', function() {
         (result.equal(e)).should.equal(true);
         result.should.equal(v);
       });
+
+      it('should return a new Vec2 when returnNew is specified', function() {
+        var
+        v = new Vec2(-10, -100),
+        result = v.abs(true);
+
+        result.should.not.equal(v);
+        (result !== v).should.be.ok
+      });
     });
 
     describe('#min', function() {
@@ -664,5 +688,14 @@ describe('Vec2', function() {
       var v = new Vec2(10, 100);
       (v + '').should.equal('(10, 100)');
     })
+  });
+
+  describe('#fast', function() {
+    it('it should not clean', function() {
+      var Vec2Fast = Vec2.fast;
+      var v = Vec2Fast(.1, .2).add(Vec2Fast(.2, .1));
+      assert.equal(v.x, 0.30000000000000004);
+      assert.equal(v.y, 0.30000000000000004);
+    });
   });
 });
