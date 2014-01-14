@@ -1,3 +1,4 @@
 .DS_Store
 gmon.out
 node_modules/
+coverage
