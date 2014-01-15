@@ -15,16 +15,22 @@
     "bench": "./test/bench/run.sh"
   },
   "devDependencies": {
-    "chai": "0.5.0",
-    "mocha": "0.14.1",
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
     "istanbul": "~0.2.3"
   },
   "testling": {
     "browsers": [
-      "ie6", "ie7", "ie8", "ie9",
-      "firefox/15", "chrome/22", "opera/12", "safari/5.1"
+      "ie6",
+      "ie7",
+      "ie8",
+      "ie9",
+      "firefox/15",
+      "chrome/22",
+      "opera/12",
+      "safari/5.1"
     ],
-    "harness" : "mocha-bdd",
+    "harness": "mocha-bdd",
     "files": "test/test.js"
   }
 }
