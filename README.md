@@ -2,7 +2,7 @@
 
 ![travis](https://api.travis-ci.org/tmpvar/vec2.js.png)
 
-[![browser support](https://ci.testling.com/tmpvar/vec2.js)](http://ci.testling.com/tmpvar/vec2.js)
+[![browser support](https://ci.testling.com/tmpvar/vec2.js.png)](http://ci.testling.com/tmpvar/vec2.js)
 
   A generic library useful when you need to work with points/vectors in 2d space.
 
