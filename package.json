@@ -10,7 +10,8 @@
   },
   "main": "lib/vec2.js",
   "scripts": {
-    "test": "istanbul cover _mocha -- test/test.js -R spec",
+    "test": "mocha test/test.js -R spec",
+    "cover": "istanbul cover _mocha -- test/test.js -R spec",
     "bench": "./test/bench/run.sh"
   },
   "devDependencies": {
