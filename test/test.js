@@ -2,7 +2,7 @@ var Vec2;
 if (typeof require !== 'undefined') {
   var assert = require('chai').assert;
   require('chai').should();
-  Vec2 = require('../lib/vec2')
+  Vec2 = require('../lib/vec2');
 } else {
   Vec2 = window.Vec2;
   chai.should();
@@ -38,7 +38,7 @@ describe('Vec2', function() {
       var v = Vec2({ x: 10, y: 0 });
       v.x.should.equal(10);
       v.y.should.equal(0);
-    })
+    });
   });
 
   describe('#change', function() {
@@ -111,13 +111,13 @@ describe('Vec2', function() {
     it('should not call change if new value === old value', function () {
       var v = Vec2(), called = false;
 
-      v.set(0, 0)
+      v.set(0, 0);
 
       v.change(function(){
         called = true;
       });
 
-      v.set(0, 0)
+      v.set(0, 0);
 
       called.should.equal(false);
     });
@@ -133,36 +133,36 @@ describe('Vec2', function() {
     it('should accept a Vec2', function () {
       var v1 = Vec2();
       var v2 = Vec2(Math.random(), Math.random());
-      v1.x.should.not.equal(v2.x)
-      v1.y.should.not.equal(v2.y)
-      v1.set(v2)
-      v1.x.should.equal(v2.x)
-      v1.y.should.equal(v2.y)
+      v1.x.should.not.equal(v2.x);
+      v1.y.should.not.equal(v2.y);
+      v1.set(v2);
+      v1.x.should.equal(v2.x);
+      v1.y.should.equal(v2.y);
     });
 
     it('should not call change if silent=true', function () {
       var v = Vec2(), called = false;
 
-      v.set(0, 0)
+      v.set(0, 0);
 
       v.change(function(){
         called = true;
       });
 
-      v.set(7, 5, false)
+      v.set(7, 5, false);
       called.should.equal(false);
     });
 
     it('should not call change if silent=true, with set(Vec2)', function () {
       var v = Vec2(), called = false;
 
-      v.set(0, 0)
+      v.set(0, 0);
 
       v.change(function(){
         called = true;
       });
 
-      v.set(new Vec2(7, 5), false)
+      v.set(new Vec2(7, 5), false);
       called.should.equal(false);
     });
   });
@@ -240,7 +240,7 @@ describe('Vec2', function() {
         v.x.should.equal(11);
         v.y.should.equal(12);
         r.should.equal(v);
-      })
+      });
     });
 
     describe('#subtract', function() {
@@ -314,7 +314,7 @@ describe('Vec2', function() {
       it('accepts a scalar angle in radians', function() {
         var v = new Vec2(10, 20);
 
-        var rotated = v.rotate(1.2, false, true)
+        var rotated = v.rotate(1.2, false, true);
         Number(rotated.x).toFixed(4).should.equal('-15.0172');
         Number(rotated.y).toFixed(4).should.equal('16.5675');
       });
@@ -394,7 +394,7 @@ describe('Vec2', function() {
         v.normalize();
         v.x.should.equal(0);
         v.y.should.equal(0);
-      })
+      });
     });
 
     describe('#skew', function() {
@@ -433,7 +433,7 @@ describe('Vec2', function() {
         result = v.abs(true);
 
         result.should.not.equal(v);
-        (result !== v).should.be.ok
+        assert.ok(result !== v);
       });
     });
 
@@ -559,7 +559,7 @@ describe('Vec2', function() {
     });
 
     it('should return the halfway point when .5', function() {
-      var v = Vec2(0, 5).lerp(Vec2(100, 5), .5);
+      var v = Vec2(0, 5).lerp(Vec2(100, 5), 0.5);
       v.x.should.equal(50);
       v.y.should.equal(5);
     });
@@ -660,7 +660,7 @@ describe('Vec2', function() {
 
   describe('#clean', function() {
     it('should clean the well known .1 + .2 case', function() {
-      Vec2.clean(.1 + .2).should.equal(.3)
+      Vec2.clean(0.1 + 0.2).should.equal(0.3);
     });
 
     it('should throw when passed NaN', function() {
@@ -671,7 +671,7 @@ describe('Vec2', function() {
 
     it('should throw when passed Infinity', function() {
       (function() {
-        Vec2.clean(1/0)
+        Vec2.clean(1/0);
       }).should.throw();
     });
   });
@@ -680,20 +680,20 @@ describe('Vec2', function() {
     it('should stringify nicely', function () {
       var v = new Vec2(3.5421, 0.234);
       JSON.stringify(v).should.equal('{"x":3.5421,"y":0.234}');
-    })
-  })
+    });
+  });
 
   describe('#toString', function() {
     it('should provide an easy to read representation', function() {
       var v = new Vec2(10, 100);
       (v + '').should.equal('(10, 100)');
-    })
+    });
   });
 
   describe('#fast', function() {
     it('it should not clean', function() {
       var Vec2Fast = Vec2.fast;
-      var v = Vec2Fast(.1, .2).add(Vec2Fast(.2, .1));
+      var v = Vec2Fast(0.1, 0.2).add(Vec2Fast(0.2, 0.1));
       assert.equal(v.x, 0.30000000000000004);
       assert.equal(v.y, 0.30000000000000004);
     });
