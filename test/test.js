@@ -664,15 +664,15 @@ describe('Vec2', function() {
     });
 
     it('should throw when passed NaN', function() {
-      (function() {
+      assert.throws(function() {
         Vec2.clean(parseInt('bla', 10));
-      }).should.throw();
+      });
     });
 
     it('should throw when passed Infinity', function() {
-      (function() {
+      assert.throws(function() {
         Vec2.clean(1/0);
-      }).should.throw();
+      })
     });
   });
 
