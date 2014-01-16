@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "mocha": "~1.17.0",
-    "istanbul": "~0.2.3"
+    "istanbul": "~0.2.3",
+    "JSON2": "~0.1.0"
   },
   "testling": {
     "browsers": [

@@ -4,7 +4,12 @@ if (typeof require !== 'undefined') {
   Vec2 = require('../lib/vec2');
 } else {
   Vec2 = window.Vec2;
+
+  if (typeof window.JSON === 'undefined') {
+    window.JSON = require('JSON2')
+  }
 }
+
 
 
 var ok = function(a, message) {
