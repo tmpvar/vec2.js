@@ -15,7 +15,6 @@
     "bench": "./test/bench/run.sh"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
     "mocha": "~1.17.0",
     "istanbul": "~0.2.3"
   },
