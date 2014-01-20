@@ -32,6 +32,6 @@
       "safari/5.1"
     ],
     "harness": "mocha-bdd",
-    "files": "test/test.js"
+    "files": ["test/test.js"]
   }
 }
