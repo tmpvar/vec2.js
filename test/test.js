@@ -4,11 +4,12 @@ if (typeof require !== 'undefined') {
   Vec2 = require('../vec2');
 } else {
   Vec2 = window.Vec2;
-
-  if (typeof window.JSON === 'undefined') {
-    window.JSON = require('JSON2')
-  }
 }
+
+if (typeof JSON === 'undefined' && typeof require !== 'undefined') {
+  var JSON = require('JSON2')
+}
+
 
 
 

@@ -12,7 +12,8 @@
   "scripts": {
     "test": "mocha test/test.js",
     "cover": "istanbul cover _mocha -- test/test.js -R spec",
-    "bench": "./test/bench/run.sh"
+    "bench": "./test/bench/run.sh",
+    "minify": "cat vec2.js | uglifyjs > vec2.min.js"
   },
   "devDependencies": {
     "mocha": "~1.17.0",
