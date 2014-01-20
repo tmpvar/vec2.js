@@ -51,7 +51,7 @@
 
 ```html
 <script type="text/javascript" src="https://raw.github.com/tmpvar/vec2.js/master/vec2.min.js"></script>
-<script type="text/javascript>
+<script type="text/javascript">
    var v = new Vec2();
 </script>
 ```
@@ -65,3 +65,8 @@ install with npm
 and then require it!
 
     var Vec2 = require('vec2');
+
+
+## License
+
+MIT (see [LICENSE.txt](blob/master/LICENSE.txt))

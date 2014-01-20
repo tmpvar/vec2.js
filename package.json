@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/tmpvar/vec2.js.git"
   },
-  "main": "lib/vec2.js",
+  "main": "vec2.js",
   "scripts": {
     "test": "mocha test/test.js",
     "cover": "istanbul cover _mocha -- test/test.js -R spec",

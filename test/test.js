@@ -1,7 +1,7 @@
 var Vec2;
 
 if (typeof require !== 'undefined') {
-  Vec2 = require('../lib/vec2');
+  Vec2 = require('../vec2');
 } else {
   Vec2 = window.Vec2;
 
