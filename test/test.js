@@ -636,6 +636,12 @@ describe('Vec2', function() {
         Vec2().divide(1/'a');
       });
     });
+
+    it('should accept a vec', function() {
+      var res = Vec2(10, 20).divide(Vec2(10, 4));
+
+      ok(Vec2(1, 5).equal(res));
+    });
   });
 
   describe('#isPointOnLine', function() {

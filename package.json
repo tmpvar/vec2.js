@@ -2,7 +2,7 @@
   "author": "Elijah Insua <tmpvar@gmail.com> (http://tmpvar.com)",
   "name": "vec2",
   "description": "Library for manipulating 2d vectors",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "homepage": "https://github.com/tmpvar/vec2.js",
   "repository": {
     "type": "git",
