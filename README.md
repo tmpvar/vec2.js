@@ -69,4 +69,4 @@ and then require it!
 
 ## License
 
-MIT (see [LICENSE.txt](blob/master/LICENSE.txt))
+MIT (see [LICENSE.txt](LICENSE.txt))
