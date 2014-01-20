@@ -7,7 +7,7 @@ if (typeof require !== 'undefined') {
 }
 
 if (typeof JSON === 'undefined' && typeof require !== 'undefined') {
-  var JSON = require('JSON2')
+  var JSON = require('JSON2');
 }
 
 

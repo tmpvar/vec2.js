@@ -310,7 +310,7 @@
     // Divide this vector's components by a scalar
     divide : function(vec2, returnNew) {
       var x,y;
-      if ('number' !== typeof vec2) { //.x !== undef) {
+      if ('number' !== typeof vec2) {
         x = vec2.x;
         y = vec2.y;
 
@@ -318,9 +318,6 @@
       } else {
         x = y = vec2;
       }
-
-      console.log(this, vec2, x, y);
-
 
       if (x === 0 || y === 0) {
         throw new Error('division by zero')
