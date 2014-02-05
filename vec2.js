@@ -1,14 +1,20 @@
 ;(function inject(clean, precision, undef) {
 
+  var isArray = function (a) {
+    return Object.prototype.toString.call(a) === "[object Array]";
+  };
+
   function Vec2(x, y) {
     if (!(this instanceof Vec2)) {
       return new Vec2(x, y);
     }
 
-    if('object' === typeof x && x) {
-      this.y = x.y || 0;
-      this.x = x.x || 0;
-      return;
+    if (isArray(x)) {
+      y = x[1];
+      x = x[0];
+    } else if('object' === typeof x && x) {
+      y = x.y;
+      x = x.x;
     }
 
     this.x = Vec2.clean(x || 0);
@@ -49,14 +55,17 @@
         y = x.y;
         x = x.x;
       }
-      if(this.x === x && this.y === y)
+
+      if(this.x === x && this.y === y) {
         return this;
+      }
 
       this.x = Vec2.clean(x);
       this.y = Vec2.clean(y);
 
-      if(silent !== false)
+      if(silent !== false) {
         return this.change();
+      }
     },
 
     // reset x and y to zero
@@ -67,13 +76,13 @@
     // return a new vector with the same component values
     // as this one
     clone : function() {
-      return new Vec2(this.x, this.y);
+      return new (this.constructor)(this.x, this.y);
     },
 
     // negate the values of this vector
     negate : function(returnNew) {
       if (returnNew) {
-        return new Vec2(-this.x, -this.y);
+        return new (this.constructor)(-this.x, -this.y);
       } else {
         return this.set(-this.x, -this.y);
       }
@@ -86,7 +95,7 @@
         return this.change();
       } else {
         // Return a new vector if `returnNew` is truthy
-        return new Vec2(
+        return new (this.constructor)(
           this.x + vec2.x,
           this.y + vec2.y
         );
@@ -100,7 +109,7 @@
         return this.change();
       } else {
         // Return a new vector if `returnNew` is truthy
-        return new Vec2(
+        return new (this.constructor)(
           this.x - vec2.x,
           this.y - vec2.y
         );
@@ -122,7 +131,7 @@
       if (!returnNew) {
         return this.set(this.x * x, this.y * y);
       } else {
-        return new Vec2(
+        return new (this.constructor)(
           this.x * x,
           this.y * y
         );
@@ -152,7 +161,7 @@
       ry = (inverse * sin) * x + cos * y;
 
       if (returnNew) {
-        return new Vec2(rx, ry);
+        return new (this.constructor)(rx, ry);
       } else {
         return this.set(rx, ry);
       }
@@ -191,7 +200,7 @@
         // but smaller than or equal to 1.0
         return this.set(this.x * invertedLength, this.y * invertedLength);
       } else {
-        return new Vec2(this.x * invertedLength, this.y * invertedLength);
+        return new (this.constructor)(this.x * invertedLength, this.y * invertedLength);
       }
     },
 
@@ -212,7 +221,7 @@
       var x = Math.abs(this.x), y = Math.abs(this.y);
 
       if (returnNew) {
-        return new Vec2(x, y);
+        return new (this.constructor)(x, y);
       } else {
         return this.set(x, y);
       }
@@ -234,7 +243,7 @@
       y = ty < vy ? ty : vy;
 
       if (returnNew) {
-        return new Vec2(x, y);
+        return new (this.constructor)(x, y);
       } else {
         return this.set(x, y);
       }
@@ -256,7 +265,7 @@
       y = ty > vy ? ty : vy;
 
       if (returnNew) {
-        return new Vec2(x, y);
+        return new (this.constructor)(x, y);
       } else {
         return this.set(x, y);
       }
@@ -287,7 +296,7 @@
     // Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
     skew : function() {
       // Returns a new vector.
-      return new Vec2(-this.y, this.x);
+      return new (this.constructor)(-this.y, this.x);
     },
 
     // calculate the dot product between
@@ -328,7 +337,7 @@
       }
 
       if (returnNew) {
-        return new Vec2(this.x / x, this.y / y);
+        return new (this.constructor)(this.x / x, this.y / y);
       }
 
       return this.set(this.x / x, this.y / y);
@@ -351,11 +360,12 @@
     },
     toString: function() {
       return '(' + this.x + ', ' + this.y + ')';
-    }
+    },
+    constructor : Vec2
   };
 
-  Vec2.fromArray = function(array) {
-    return new Vec2(array[0], array[1]);
+  Vec2.fromArray = function(array, ctor) {
+    return new (ctor || Vec2)(array[0], array[1]);
   };
 
   // Floating point stability
@@ -392,5 +402,3 @@
   }
   return Vec2;
 })();
-
-

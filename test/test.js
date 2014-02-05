@@ -10,9 +10,6 @@ if (typeof JSON === 'undefined' && typeof require !== 'undefined') {
   var JSON = require('JSON2');
 }
 
-
-
-
 var ok = function(a, message) {
   if (!a) {
     throw new Error(message || 'fail');
@@ -30,6 +27,12 @@ var throws = function(fn) {
     throw new Error('did not throw as expected');
   }
 };
+
+function Vec2Extended() {
+  return Vec2.apply(this, arguments);
+}
+Vec2Extended.prototype = Object.create(Vec2.prototype);
+Vec2Extended.prototype.constructor = Vec2Extended;
 
 describe('Vec2', function() {
   describe('constructor', function() {
@@ -62,6 +65,11 @@ describe('Vec2', function() {
       ok(v.x === 10);
       ok(v.y === 0);
     });
+
+    it('should extract x,y from an array', function() {
+      var v = Vec2([10, 5]);
+      ok(v.equal(Vec2(10, 5)));
+    })
   });
 
   describe('#change', function() {
@@ -642,6 +650,32 @@ describe('Vec2', function() {
       var res = Vec2(10, 20).divide(Vec2(10, 4));
 
       ok(Vec2(1, 5).equal(res));
+    });
+  });
+
+  describe('inheritance', function() {
+    it('should use this.constructor when creating new instances', function() {
+      var v = new Vec2Extended(10, 10);
+
+      [
+        v.clone(),
+        v.subtract(Vec2(), true),
+        v.add(Vec2(), true),
+        v.multiply(Vec2(), true),
+        v.divide(1, true),
+        v.negate(true),
+        v.rotate(.1, false, true),
+        v.normalize(true),
+        v.abs(true),
+        v.min(Vec2(), true),
+        v.max(Vec2(), true),
+        v.clamp(Vec2(), Vec2(), true),
+        v.skew(),
+        Vec2.fromArray([0, 1], Vec2Extended),
+      ].map(function(vec) {
+        ok(vec instanceof Vec2Extended);
+      });
+
     });
   });
 
