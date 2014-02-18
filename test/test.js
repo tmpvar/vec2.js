@@ -91,6 +91,19 @@ describe('Vec2', function() {
       ok(v.observers.length === 1);
       ok(called === true);
     });
+
+    it('should include a clone of previous values as a second param', function() {
+      var v = Vec2(), called = false;
+
+      v.change(function(vec, prev){
+        ok(vec === v);
+        ok(prev !== v);
+        ok(vec.equal(Vec2(10, 10)));
+        ok(prev.equal(Vec2(0, 0)));
+      });
+
+      v.set(10, 10);
+    });
   });
 
   describe('#ignore', function() {

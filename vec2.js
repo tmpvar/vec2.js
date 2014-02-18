@@ -23,15 +23,15 @@
 
   Vec2.prototype = {
     change : function(fn) {
-      if (fn) {
+      if (typeof fn === 'function') {
         if (this.observers) {
           this.observers.push(fn);
         } else {
           this.observers = [fn];
         }
-      } else if (this.observers) {
+      } else if (this.observers && this.observers.length) {
         for (var i=this.observers.length-1; i>=0; i--) {
-          this.observers[i](this);
+          this.observers[i](this, fn);
         }
       }
 
@@ -60,11 +60,16 @@
         return this;
       }
 
+      var orig = null;
+      if (this.observers && this.observers.length) {
+        orig = this.clone();
+      }
+
       this.x = Vec2.clean(x);
       this.y = Vec2.clean(y);
 
       if(silent !== false) {
-        return this.change();
+        return this.change(orig);
       }
     },
 
