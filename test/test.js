@@ -127,6 +127,11 @@ describe('Vec2', function() {
       v.ignore();
       ok(v.observers.length === 0);
     });
+
+    it('should noop when no observers have been added', function() {
+      var v = Vec2();
+      v.ignore();
+    });
   });
 
   describe('#clone', function() {
