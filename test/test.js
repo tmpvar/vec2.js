@@ -604,6 +604,16 @@ describe('Vec2', function() {
       ok(v.x === 50);
       ok(v.y === 5);
     });
+
+    it('should return the halfway point when .5 (returnNew)', function() {
+      var v = Vec2(0, 5);
+      var v2 = v.lerp(Vec2(100, 5), 0.5, true);
+
+      ok(v.x === 0);
+      ok(v.y === 5);
+      ok(v2.x === 50);
+      ok(v2.y === 5);
+    });
   });
 
   describe('#dot', function() {

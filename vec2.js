@@ -294,8 +294,8 @@
 
     // Perform linear interpolation between two vectors
     // amount is a decimal between 0 and 1
-    lerp : function(vec, amount) {
-      return this.add(vec.subtract(this, true).multiply(amount), true);
+    lerp : function(vec, amount, returnNew) {
+      return this.add(vec.subtract(this, true).multiply(amount), returnNew);
     },
 
     // Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
