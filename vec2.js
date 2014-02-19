@@ -40,9 +40,13 @@
 
     ignore : function(fn) {
       if (this.observers) {
-        var o = this.observers, l = o.length;
-        while(l--) {
-          o[l] === fn && o.splice(l, 1);
+        if (!fn) {
+          this.observers = [];
+        } else {
+          var o = this.observers, l = o.length;
+          while(l--) {
+            o[l] === fn && o.splice(l, 1);
+          }
         }
       }
       return this;

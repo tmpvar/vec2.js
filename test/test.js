@@ -117,6 +117,16 @@ describe('Vec2', function() {
       v.ignore(ignoreLater);
       ok(v.observers.length === 1);
     });
+
+    it('should remove all observers when no fn is passed', function() {
+      var v = Vec2();
+      v.change(function() {});
+      v.change(function() {});
+
+      ok(v.observers.length === 2);
+      v.ignore();
+      ok(v.observers.length === 0);
+    });
   });
 
   describe('#clone', function() {
