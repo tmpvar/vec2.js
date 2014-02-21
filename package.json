@@ -3,7 +3,7 @@
   "name": "vec2",
   "description": "manipulate vectors in 2d",
   "keywords": ["2d", "vec", "vector", "geometry"],
-  "version": "1.4.2",
+  "version": "1.5.0",
   "homepage": "https://github.com/tmpvar/vec2.js",
   "repository": {
     "type": "git",
