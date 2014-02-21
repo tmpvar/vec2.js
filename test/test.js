@@ -198,7 +198,7 @@ describe('Vec2', function() {
       ok(v1.y === v2.y);
     });
 
-    it('should not call change if silent=true', function () {
+    it('should not call change if notify=false', function () {
       var v = Vec2(), called = false;
 
       v.set(0, 0);
@@ -211,7 +211,7 @@ describe('Vec2', function() {
       ok(called === false);
     });
 
-    it('should not call change if silent=true, with set(Vec2)', function () {
+    it('should not call change if notify=false, with set(Vec2)', function () {
       var v = Vec2(), called = false;
 
       v.set(0, 0);
@@ -222,6 +222,19 @@ describe('Vec2', function() {
 
       v.set(new Vec2(7, 5), false);
       ok(called === false);
+    });
+
+    it('should not clone for notify if notify=false', function() {
+      var v = Vec2();
+      v.change(function(){});
+      v.clone = function() { throw new Error('should not clone'); }
+      v.set(10, 10, false);
+    });
+
+    it('should not clone for notify if no observers', function() {
+      var v = Vec2();
+      v.clone = function() { throw new Error('should not clone'); }
+      v.set(10, 10);
     });
   });
 

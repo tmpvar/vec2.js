@@ -53,9 +53,9 @@
     },
 
     // set x and y
-    set: function(x, y, silent) {
+    set: function(x, y, notify) {
       if('number' != typeof x) {
-        silent = y;
+        notify = y;
         y = x.y;
         x = x.x;
       }
@@ -65,14 +65,14 @@
       }
 
       var orig = null;
-      if (this.observers && this.observers.length) {
+      if (notify !== false && this.observers && this.observers.length) {
         orig = this.clone();
       }
 
       this.x = Vec2.clean(x);
       this.y = Vec2.clean(y);
 
-      if(silent !== false) {
+      if(notify !== false) {
         return this.change(orig);
       }
     },
@@ -99,6 +99,7 @@
 
     // Add the incoming `vec2` vector to this vector
     add : function(vec2, returnNew) {
+
       if (!returnNew) {
         return this.set(this.x + vec2.x, this.y + vec2.y);
       } else {
