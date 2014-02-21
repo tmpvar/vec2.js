@@ -100,8 +100,7 @@
     // Add the incoming `vec2` vector to this vector
     add : function(vec2, returnNew) {
       if (!returnNew) {
-        this.x += vec2.x; this.y += vec2.y;
-        return this.change();
+        return this.set(this.x + vec2.x, this.y + vec2.y);
       } else {
         // Return a new vector if `returnNew` is truthy
         return new (this.constructor)(
@@ -114,8 +113,7 @@
     // Subtract the incoming `vec2` from this vector
     subtract : function(vec2, returnNew) {
       if (!returnNew) {
-        this.x -= vec2.x; this.y -= vec2.y;
-        return this.change();
+        return this.set(this.x - vec2.x, this.y - vec2.y);
       } else {
         // Return a new vector if `returnNew` is truthy
         return new (this.constructor)(
