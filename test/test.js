@@ -312,6 +312,32 @@ describe('Vec2', function() {
         ok(v.y === 12);
         ok(r === v);
       });
+
+      it('supports passing x,y', function() {
+        var v = new Vec2(1, 2);
+        ok(v.add(1,1) === v);
+      });
+
+      it('supports passing x,y (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.add(1,1, true)
+        ok(v2 !== v);
+        ok(v2.equal(2, 3));
+      });
+
+      it('supports passing [x,y]', function() {
+        var v = new Vec2(1, 2);
+        ok(v.add([1,1]) === v);
+        ok(v.equal(2, 3));
+      });
+
+      it('supports passing [x,y] (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.add([1, 1], true)
+        ok(v2 !== v);
+        ok(v2.equal(2, 3));
+      });
+
     });
 
     describe('#subtract', function() {
@@ -333,6 +359,31 @@ describe('Vec2', function() {
       it('returns itself when returnNew is falsy', function() {
         var v = new Vec2(1,2);
         ok(v.subtract(new Vec2(1,1)) === v);
+      });
+
+      it('supports passing x,y', function() {
+        var v = new Vec2(1, 2);
+        ok(v.subtract(1,1) === v);
+      });
+
+      it('supports passing x,y (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.subtract(1,1, true)
+        ok(v2 !== v);
+        ok(v2.equal(0, 1));
+      });
+
+      it('supports passing [x,y]', function() {
+        var v = new Vec2(1, 2);
+        ok(v.subtract([1,1]) === v);
+        ok(v.equal(0, 1));
+      });
+
+      it('supports passing [x,y] (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.subtract([1, 1], true)
+        ok(v2 !== v);
+        ok(v2.equal(0, 1));
       });
     });
 
@@ -379,6 +430,31 @@ describe('Vec2', function() {
           ok(v.multiply(1) === v);
         });
       });
+
+      it('supports passing x,y', function() {
+        var v = new Vec2(1, 2);
+        ok(v.multiply(1,1) === v);
+      });
+
+      it('supports passing x,y (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.multiply(5,2, true)
+        ok(v2 !== v);
+        ok(v2.equal(5, 4));
+      });
+
+      it('supports passing [x,y]', function() {
+        var v = new Vec2(1, 2);
+        ok(v.multiply([5, 2]) === v);
+        ok(v.equal(5, 4));
+      });
+
+      it('supports passing [x,y] (returnNew)', function() {
+        var v = new Vec2(1, 2);
+        var v2 = v.multiply([5, 2], true)
+        ok(v2 !== v);
+        ok(v2.equal(5, 4));
+      });
     });
 
     describe('#rotate', function() {
@@ -389,7 +465,6 @@ describe('Vec2', function() {
         ok(Number(rotated.x).toFixed(4) === '-15.0172');
         ok(Number(rotated.y).toFixed(4) === '16.5675');
       });
-
 
       it('accepts a scalar angle in radians (inverse)', function() {
         var v = new Vec2(10, 20);
@@ -469,9 +544,17 @@ describe('Vec2', function() {
     });
 
     describe('#skew', function() {
-      // TODO: returnNew
+
       it('negates the y axis and swap x/y', function() {
         var v3 = v.skew();
+        ok(v3 === v);
+        ok(v3.x === -2);
+        ok(v3.y === 1);
+      });
+
+      it('negates the y axis and swap x/y (returnNew)', function() {
+        var v3 = v.skew(true);
+        ok(v3 !== v);
         ok(v.x === 1);
         ok(v.y === 2);
         ok(v3.x === -2);
@@ -573,6 +656,16 @@ describe('Vec2', function() {
     it('detects values that are closer than Vec2.precision', function() {
       var v = new Vec2(1, 2);
       ok(v.equal(Vec2(1.0 + 1e-14, 2)));
+    });
+
+    it('supports x/y', function() {
+      var v = new Vec2(1, 2);
+      ok(v.equal(1, 2));
+    });
+
+    it('supports array', function() {
+      var v = new Vec2(1, 2);
+      ok(v.equal([1, 2]));
     });
   });
 
@@ -701,6 +794,32 @@ describe('Vec2', function() {
       var res = Vec2(10, 20).divide(Vec2(10, 4));
 
       ok(Vec2(1, 5).equal(res));
+    });
+
+    it('supports passing x,y', function() {
+      var v = new Vec2(10, 20);
+      ok(v.divide(10,2) === v);
+      ok(v.equal(1, 10));
+    });
+
+    it('supports passing x,y (returnNew)', function() {
+      var v = new Vec2(10, 20);
+      var v2 = v.divide(10, 2, true)
+      ok(v2 !== v);
+      ok(v2.equal(1, 10));
+    });
+
+    it('supports passing [x,y]', function() {
+      var v = new Vec2(10, 20);
+      ok(v.divide([10, 2]) === v);
+      ok(v.equal(1, 10));
+    });
+
+    it('supports passing [x,y] (returnNew)', function() {
+      var v = new Vec2(10, 20);
+      var v2 = v.divide([10, 2], true)
+      ok(v2 !== v);
+      ok(v2.equal(1, 10));
     });
   });
 
