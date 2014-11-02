@@ -630,6 +630,39 @@ describe('Vec2', function() {
     });
   });
 
+  describe('#nearest', function() {
+    it('returns nearest Vec2 to this Vec2', function() {
+      var
+      v = new Vec2(0, 0),
+      closest = new Vec2(1, 0),
+      middle = new Vec2(2, 0),
+      far = new Vec2(3, 0);
+
+      var nearest = v.nearest([middle, closest, far]);
+
+      ok(nearest.equal(closest));
+    });
+
+    it('returns first of nearest Vec2s if there are multiple nearest', function() {
+      var
+      v = new Vec2(0, 0),
+      closest = new Vec2(1, 0),
+      anotherClosest = new Vec2(-1, 0);
+
+      var nearest = v.nearest([closest, anotherClosest]);
+
+      ok(nearest.equal(closest));
+    });
+
+    it('returns null if no Vec2s are in given Array', function() {
+      var v = new Vec2(0, 0);
+
+      var nearest = v.nearest([]);
+
+      ok(nearest === null);
+    });
+  });
+
   describe('#equal', function() {
     it('returns true when both Vec2s have the same values', function() {
       var
