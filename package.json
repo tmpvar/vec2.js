@@ -2,8 +2,13 @@
   "author": "Elijah Insua <tmpvar@gmail.com> (http://tmpvar.com)",
   "name": "vec2",
   "description": "manipulate vectors in 2d",
-  "keywords": ["2d", "vec", "vector", "geometry"],
-  "version": "1.5.0",
+  "keywords": [
+    "2d",
+    "vec",
+    "vector",
+    "geometry"
+  ],
+  "version": "1.6.0",
   "homepage": "https://github.com/tmpvar/vec2.js",
   "repository": {
     "type": "git",
@@ -33,6 +38,8 @@
       "safari/5.1"
     ],
     "harness": "mocha-bdd",
-    "files": ["test/test.js"]
+    "files": [
+      "test/test.js"
+    ]
   }
 }
