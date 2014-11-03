@@ -150,6 +150,11 @@ _returns_: the distance between this vector and the incoming
 
 <hr />
 
+__nearest__(array)
+
+_returns_: closest vector in array to this vector.
+
+<hr />
 
 __normalize__([returnNew])
 
