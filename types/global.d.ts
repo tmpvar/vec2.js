@@ -40,6 +40,7 @@ declare module 'vec2' {
 		public fromArray: (arr: [number, number]) => Vec2
 		public toJson: () => {x: number, y: number}
 		public toString: () => string
+		constructor(x?: number, y?: number)
 	}
 
 	type addSub = (
