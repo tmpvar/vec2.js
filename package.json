@@ -15,7 +15,7 @@
     "url": "https://github.com/tmpvar/vec2.js.git"
   },
   "main": "vec2.js",
-  "typings": "types",
+  "typings": "types/global.d.ts",
   "scripts": {
     "test": "mocha test/test.js",
     "cover": "istanbul cover _mocha -- test/test.js -R spec",
