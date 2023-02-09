@@ -231,13 +231,13 @@ _returns_: `Vec2`
 
 <hr />
 
-__dot__()
+__dot__(vec)
 
 _returns_: `double`
 
 <hr />
 
-__perpDot__()
+__perpDot__(vec)
 
 _returns_: `double`
 
